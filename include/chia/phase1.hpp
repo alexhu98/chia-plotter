@@ -481,12 +481,12 @@ void compute(	const input_t& input, output_t& out,
 	compute_table<entry_3, entry_4, tmp_entry_x>(
 			4, num_threads, &sort_3, &sort_4, &tmp_3);
 	
-	DiskTable<tmp_entry_x> tmp_4(prefix + "table4.tmp");
+	DiskTable<tmp_entry_x> tmp_4(prefix_3 + "table4.tmp");
 	DiskSort5 sort_5(32 + kExtraBits, log_num_buckets, prefix_2 + "t5");
 	compute_table<entry_4, entry_5, tmp_entry_x>(
 			5, num_threads, &sort_4, &sort_5, &tmp_4);
 	
-	DiskTable<tmp_entry_x> tmp_5(prefix + "table5.tmp");
+	DiskTable<tmp_entry_x> tmp_5(prefix_3 + "table5.tmp");
 	DiskSort6 sort_6(32 + kExtraBits, log_num_buckets, prefix_2 + "t6");
 	compute_table<entry_5, entry_6, tmp_entry_x>(
 			6, num_threads, &sort_5, &sort_6, &tmp_5);
