@@ -1,20 +1,12 @@
-# chia-plotter (duo edition)
+# chia-plotter (bigtmp2 edition)
 
-This branch aims to start the 2nd plot early when tmpdir is a 230 GiB and the final dir is also stored in the same device.
-An external script moves the finished plot to the final farmer storage.
+This branch aims to make full use of a large tmpdir2 folder up to 233 GiB, allowing the use of an old SATA 256GB SSD, or 
+a 233 GiB RAM disk in a 256 GiB RAM system. 
 
-Until the previous plot is moved out of tmpdir, there is not enough finish the second plot. However, the second plot can have
-an early start with the following changes:
+This branch contains the following changes:
 
-1. Move phase 1 table 6 (25 GiB) into tmpdir2, freeing up enough tmpdir space for phase 1 of the second plot to be finished.
-On my system, it took about 16 minutes to move out the previous plot, about the same time it took for phase 1.
-
-2. When phase 2 starts, it converts the phase 1 table 7 (which is already in tmpdir2) to phase 2 table 7 (also already in tmpdir2).
-Afterwards, this edition waits for the necessary storage space before starting table 6. Normally, this wait time is not necessary,
-but it is there in case if the final farmer storage is temporarily unavailable.
-
-With these changes, the second plot can be staggered while the first plot is being moved to the final farmer storage, allowing a
-single 230 GiB SATA SSD + ram disk to achieve 32 plots a day, instead of 24 plots a day without staggering.
+1. Move phase 1 table 4, 5, 6 to tmpdir2.
+2. Move phase 2 all tables to tmpdir2.
 
 ## Install
 
@@ -26,8 +18,8 @@ single 230 GiB SATA SSD + ram disk to achieve 32 plots a day, instead of 24 plot
   git clone https://github.com/alexhu98/chia-plotter.git 
   cd chia-plotter
 
-  # Checkout the duo edition
-  git checkout duo
+  # Checkout the bigtmp2 edition
+  git checkout bigtmp2
   git pull
 
   git submodule update --init
