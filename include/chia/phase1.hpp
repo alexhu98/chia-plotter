@@ -468,14 +468,14 @@ void compute(	const input_t& input, output_t& out,
 	DiskSort1 sort_1(32 + kExtraBits, log_num_buckets, prefix_2 + "t1");
 	compute_f1(input.id.data(), num_threads, &sort_1);
 
-	wait_for_space("P1", tmp_dir_2, 55);
+	wait_for_space("P1", tmp_dir_2, 40);
 
 	DiskTable<tmp_entry_1> tmp_1(prefix + "table1.tmp");
 	DiskSort2 sort_2(32 + kExtraBits, log_num_buckets, prefix_2 + "t2");
 	compute_table<entry_1, entry_2, tmp_entry_1>(
 			2, num_threads, &sort_1, &sort_2, &tmp_1);
 	
-	wait_for_space("P1", tmp_dir_2, 55);
+	wait_for_space("P1", tmp_dir_2, 60);
 
 	DiskTable<tmp_entry_x> tmp_2(prefix_3 + "table2.tmp");
 	DiskSort3 sort_3(32 + kExtraBits, log_num_buckets, prefix_2 + "t3");
@@ -489,7 +489,7 @@ void compute(	const input_t& input, output_t& out,
 	compute_table<entry_3, entry_4, tmp_entry_x>(
 			4, num_threads, &sort_3, &sort_4, &tmp_3);
 	
-	wait_for_space("P1", tmp_dir_2, 25);
+	wait_for_space("P1", tmp_dir_2, 10);
 
 	DiskTable<tmp_entry_x> tmp_4(prefix_3 + "table4.tmp");
 	DiskSort5 sort_5(32 + kExtraBits, log_num_buckets, prefix_2 + "t5");
