@@ -453,7 +453,7 @@ int main(int argc, char** argv)
 		std::cout << "Crafting plot " << i+1 << " out of " << num_plots << std::endl;
 		const auto out = create_plot(
 				num_threads, log_num_buckets, log_num_buckets_3,
-				pool_key, puzzle_hash, farmer_key, tmp_dir, tmp_dir2, final_dir);
+				pool_key, puzzle_hash, farmer_key, tmp_dir, tmp_dir2, tmp_dir);
 		
 		if(final_dir != tmp_dir)
 		{
