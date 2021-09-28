@@ -1,7 +1,7 @@
 # chia-plotter (bigtmp2 edition)
 
-This branch aims to make full use of a large tmpdir2 folder up to 233 GiB, allowing the use of an old SATA 256GB SSD, or 
-a 233 GiB RAM disk in a 256 GiB RAM system. 
+This branch aims to make full use of a large tmpdir2 folder up to 230 GiB, allowing the use of an old SATA 256GB SSD, or 
+a 230 GiB RAM disk in a 256 GiB RAM system. tmpdir requires 103 GiB.
 
 This branch contains the following changes:
 
