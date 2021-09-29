@@ -5,7 +5,7 @@ a 230 GiB RAM disk in a 256 GiB RAM system. tmpdir requires 103 GiB.
 
 This branch contains the following changes:
 
-1. Move phase 1 table 4, 5, 6 to tmpdir2.
+1. Move phase 1 table 2, 3, 4, 5, 6 to tmpdir2.
 2. Move phase 2 all tables to tmpdir2.
 
 ## Install
