@@ -1,4 +1,4 @@
-# chia-plotter (sata edition)
+# chia-plotter (sata with more ram edition)
 
 This branch assumes that tmpdir and tmpdir2 are different SATA drives. Unlike NVMe or SAS drives which are full duplex, 
 SATA drives are half duplex meaning that transmit and receive cannot occur at the same time, meaning that the total 
@@ -7,7 +7,10 @@ bandwidth (550 MB/s) is splitted between the read and write operations.
 This sata edition aims to organize the tables so that one SATA drive reads while the other SATA drive writes, and vice versa.
 It has a slight bias on tmpdir so that the a faster sata or NVMe drive is best served as tmpdir.
 
-tmpdir requires 130 GiB, tmpdir2 requires 222 GiB.
+This special edition also assumes a 42 GiB ram drive mounted on /mnt/ram/tmp/. Phase 1 table 1 and most tables of phase 3 are
+moved in the ram drive.
+
+tmpdir requires 130 GiB, tmpdir2 requires 222 GiB, /mnt/ram/tmp/ requires 42 GiB.
 
 
 ## Install
