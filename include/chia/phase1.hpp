@@ -478,7 +478,7 @@ void compute(	const input_t& input, output_t& out,
 	DiskSort1 sort_1(k + kExtraBits, log_num_buckets, prefix_3 + "t1");
 	compute_f1(input.id.data(), k, num_threads, &sort_1);
 	
-	DiskTable<tmp_entry_1> tmp_1(prefix + "table1.tmp");
+	DiskTable<tmp_entry_1> tmp_1(prefix_2 + "table1.tmp");
 	DiskSort2 sort_2(k + kExtraBits, log_num_buckets, prefix + "t2");
 	compute_table<entry_1, entry_2, tmp_entry_1>(
 			2, k, num_threads, &sort_1, &sort_2, &tmp_1);
@@ -503,7 +503,7 @@ void compute(	const input_t& input, output_t& out,
 	compute_table<entry_5, entry_6, tmp_entry_x>(
 			6, k, num_threads, &sort_5, &sort_6, &tmp_5);
 	
-	DiskTable<tmp_entry_x> tmp_6(prefix_2 + "table6.tmp");
+	DiskTable<tmp_entry_x> tmp_6(prefix_3 + "table6.tmp");
 	DiskTable<entry_7> tmp_7(prefix + "table7.tmp");
 	compute_table<entry_6, entry_7, tmp_entry_x, DiskSort6, DiskSort7>(
 			7, k, num_threads, &sort_6, nullptr, &tmp_6, &tmp_7);

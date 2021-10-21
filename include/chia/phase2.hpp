@@ -153,12 +153,26 @@ void compute(	const phase1::output_t& input, output_t& out,
 	table_7.close();
 	remove(input.table[6].file_name);
 
-	wait_for_space("P2", tmp_dir, 102);
+	// wait_for_space("P2", tmp_dir, 102);
 
 	for(int i = 5; i >= 1; --i)
 	{
 		std::swap(curr_bitfield, next_bitfield);
-		out.sort[i] = std::make_shared<DiskSortT>(k, log_num_buckets, (i > 1 ? prefix_2 : prefix_3) + "t" + std::to_string(i + 1));
+		std::string i_prefix = prefix_2;
+		switch (i + 1) {
+			case 2:
+				i_prefix = prefix_3; // p2.t2 in /mnt/ram
+				break;
+
+			case 3:
+			case 5:
+				i_prefix = prefix; // p2.t3, p2.t5 in tmp1
+				break;
+
+			default:
+				break;
+		}
+		out.sort[i] = std::make_shared<DiskSortT>(k, log_num_buckets, i_prefix + "t" + std::to_string(i + 1));
 		
 		compute_table<phase1::tmp_entry_x, entry_x, DiskSortT>(
 			i + 1, num_threads, out.sort[i].get(), nullptr, input.table[i], next_bitfield.get(), curr_bitfield.get());
