@@ -481,7 +481,7 @@ void compute(	phase2::output_t& input, output_t& out,
 	const int k = input.params.k;
 	const std::string prefix = "/mnt/ram/tmp/" + plot_name + ".";
 	const std::string prefix_2 = "/mnt/ram/tmp/" + plot_name + ".";
-	const std::string prefix_3 = tmp_dir_2 + plot_name + ".";
+	const std::string prefix_1 = tmp_dir + plot_name + ".";
 	
 	out.params = input.params;
 	out.plot_file_name = tmp_dir + plot_name + ".plot.tmp";
@@ -536,7 +536,7 @@ void compute(	phase2::output_t& input, output_t& out,
 	
 	DiskTable<phase2::entry_7> R_table_7(input.table_7);
 	
-	R_sort_lp = std::make_shared<DiskSortLP>(2 * k - 1, log_num_buckets, prefix_3 + "p3s1.t7");
+	R_sort_lp = std::make_shared<DiskSortLP>(2 * k - 1, log_num_buckets, prefix_1 + "p3s1.t7");
 	
 	compute_stage1<entry_np, phase2::entry_7, DiskSortNP, phase2::DiskSort7>(
 			6, num_threads, L_sort_np.get(), nullptr, R_sort_lp.get(), nullptr, nullptr, &R_table_7);
