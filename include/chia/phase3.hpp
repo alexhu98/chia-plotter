@@ -480,7 +480,7 @@ void compute(	phase2::output_t& input, output_t& out,
 	const auto total_begin = get_wall_time_micros();
 	
 	const int k = input.params.k;
-	const std::string prefix_2 = tmp_dir_2 + plot_name + ".";
+	const std::string prefix_2 = "/mnt/ram/tmp/" + plot_name + ".";
 	
 	out.params = input.params;
 	out.plot_file_name = plot_dir + plot_name + ".plot.tmp";

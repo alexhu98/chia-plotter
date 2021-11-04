@@ -473,27 +473,26 @@ void compute(	const input_t& input, output_t& out,
 	const int k = input.k;
 	const std::string prefix = tmp_dir + plot_name + ".p1.";
 	const std::string prefix_2 = tmp_dir_2 + plot_name + ".p1.";
+	const std::string prefix_3 = "/mnt/ram/tmp/" + plot_name + ".p1.";
 	
-	wait_for_space("P1", tmp_dir_2, 40);
-
-	DiskSort1 sort_1(k + kExtraBits, log_num_buckets, prefix_2 + "t1");
+	DiskSort1 sort_1(k + kExtraBits, log_num_buckets, prefix_3 + "t1");
 	compute_f1(input.id.data(), k, num_threads, &sort_1);
 	
-	wait_for_space("P1", tmp_dir_2, 40);
+	// wait_for_space("P1", tmp_dir_2, 40);
 
 	DiskTable<tmp_entry_1> tmp_1(prefix + "table1.tmp");
 	DiskSort2 sort_2(k + kExtraBits, log_num_buckets, prefix_2 + "t2");
 	compute_table<entry_1, entry_2, tmp_entry_1>(
 			2, k, num_threads, &sort_1, &sort_2, &tmp_1);
 
-	wait_for_space("P1", tmp_dir_2, 60);
+	// wait_for_space("P1", tmp_dir_2, 60);
 
 	DiskTable<tmp_entry_x> tmp_2(prefix_2 + "table2.tmp");
 	DiskSort3 sort_3(k + kExtraBits, log_num_buckets, prefix_2 + "t3");
 	compute_table<entry_2, entry_3, tmp_entry_x>(
 			3, k, num_threads, &sort_2, &sort_3, &tmp_2);
 	
-	wait_for_space("P1", tmp_dir_2, 25);
+	// wait_for_space("P1", tmp_dir_2, 25);
 
 	DiskTable<tmp_entry_x> tmp_3(prefix_2 + "table3.tmp");
 	DiskSort4 sort_4(k + kExtraBits, log_num_buckets, prefix_2 + "t4");
@@ -511,7 +510,7 @@ void compute(	const input_t& input, output_t& out,
 			6, k, num_threads, &sort_5, &sort_6, &tmp_5);
 	
 	DiskTable<tmp_entry_x> tmp_6(prefix_2 + "table6.tmp");
-	DiskTable<entry_7> tmp_7(prefix_2 + "table7.tmp");
+	DiskTable<entry_7> tmp_7(prefix_3 + "table7.tmp");
 	compute_table<entry_6, entry_7, tmp_entry_x, DiskSort6, DiskSort7>(
 			7, k, num_threads, &sort_6, nullptr, &tmp_6, &tmp_7);
 	
