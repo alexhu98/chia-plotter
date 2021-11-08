@@ -473,37 +473,96 @@ void compute(	const input_t& input, output_t& out,
 	const int k = input.k;
 	const std::string prefix = tmp_dir + plot_name + ".p1.";
 	const std::string prefix_2 = tmp_dir_2 + plot_name + ".p1.";
+
+	std::string prefix_t1 = prefix;
+	std::string prefix_t2 = prefix;
+	std::string prefix_t3 = prefix;
+	std::string prefix_t4 = prefix;
+	std::string prefix_t5 = prefix;
+	std::string prefix_t6 = prefix;
+
+	std::string prefix_table1 = prefix;
+	std::string prefix_table2 = prefix;
+	std::string prefix_table3 = prefix;
+	std::string prefix_table4 = prefix;
+	std::string prefix_table5 = prefix;
+	std::string prefix_table6 = prefix;
+	std::string prefix_table7 = prefix;
+
+	switch (k) {
+	case 32:
+		prefix_t1 = prefix_2;
+		break;
+
+	case 31:
+		prefix_t1 = prefix_2;
+		prefix_t2 = prefix_2;
+		prefix_t5 = prefix_2;
+		prefix_t6 = prefix_2;
+		prefix_table7 = prefix_2;
+		break;
+
+	case 30:
+		prefix_t1 = prefix_2;
+		prefix_t2 = prefix_2;
+		prefix_t3 = prefix_2;
+		prefix_t4 = prefix_2;
+		prefix_t5 = prefix_2;
+		prefix_t6 = prefix_2;
+		prefix_table2 = prefix_2;
+		prefix_table3 = prefix_2;
+		prefix_table4 = prefix_2;
+		prefix_table5 = prefix_2;
+		prefix_table7 = prefix_2;
+		break;
+
+	case 29:
+		prefix_t1 = prefix_2;
+		prefix_t2 = prefix_2;
+		prefix_t3 = prefix_2;
+		prefix_t4 = prefix_2;
+		prefix_t5 = prefix_2;
+		prefix_t6 = prefix_2;
+		prefix_table1 = prefix_2;
+		prefix_table2 = prefix_2;
+		prefix_table3 = prefix_2;
+		prefix_table4 = prefix_2;
+		prefix_table5 = prefix_2;
+		prefix_table6 = prefix_2;
+		prefix_table7 = prefix_2;
+		break;
+	}
 	
-	DiskSort1 sort_1(k + kExtraBits, log_num_buckets, prefix_2 + "t1");
+	DiskSort1 sort_1(k + kExtraBits, log_num_buckets, prefix_t1 + "t1");
 	compute_f1(input.id.data(), k, num_threads, &sort_1);
 	
-	DiskTable<tmp_entry_1> tmp_1(prefix + "table1.tmp");
-	DiskSort2 sort_2(k + kExtraBits, log_num_buckets, prefix_2 + "t2");
+	DiskTable<tmp_entry_1> tmp_1(prefix_table1 + "table1.tmp");
+	DiskSort2 sort_2(k + kExtraBits, log_num_buckets, prefix_t2 + "t2");
 	compute_table<entry_1, entry_2, tmp_entry_1>(
 			2, k, num_threads, &sort_1, &sort_2, &tmp_1);
 	
-	DiskTable<tmp_entry_x> tmp_2(prefix + "table2.tmp");
-	DiskSort3 sort_3(k + kExtraBits, log_num_buckets, prefix_2 + "t3");
+	DiskTable<tmp_entry_x> tmp_2(prefix_table2 + "table2.tmp");
+	DiskSort3 sort_3(k + kExtraBits, log_num_buckets, prefix_t3 + "t3");
 	compute_table<entry_2, entry_3, tmp_entry_x>(
 			3, k, num_threads, &sort_2, &sort_3, &tmp_2);
 	
-	DiskTable<tmp_entry_x> tmp_3(prefix + "table3.tmp");
-	DiskSort4 sort_4(k + kExtraBits, log_num_buckets, prefix_2 + "t4");
+	DiskTable<tmp_entry_x> tmp_3(prefix_table3 + "table3.tmp");
+	DiskSort4 sort_4(k + kExtraBits, log_num_buckets, prefix_t4 + "t4");
 	compute_table<entry_3, entry_4, tmp_entry_x>(
 			4, k, num_threads, &sort_3, &sort_4, &tmp_3);
 	
-	DiskTable<tmp_entry_x> tmp_4(prefix + "table4.tmp");
-	DiskSort5 sort_5(k + kExtraBits, log_num_buckets, prefix_2 + "t5");
+	DiskTable<tmp_entry_x> tmp_4(prefix_table4 + "table4.tmp");
+	DiskSort5 sort_5(k + kExtraBits, log_num_buckets, prefix_t5 + "t5");
 	compute_table<entry_4, entry_5, tmp_entry_x>(
 			5, k, num_threads, &sort_4, &sort_5, &tmp_4);
 	
-	DiskTable<tmp_entry_x> tmp_5(prefix + "table5.tmp");
-	DiskSort6 sort_6(k + kExtraBits, log_num_buckets, prefix_2 + "t6");
+	DiskTable<tmp_entry_x> tmp_5(prefix_table5 + "table5.tmp");
+	DiskSort6 sort_6(k + kExtraBits, log_num_buckets, prefix_t6 + "t6");
 	compute_table<entry_5, entry_6, tmp_entry_x>(
 			6, k, num_threads, &sort_5, &sort_6, &tmp_5);
 	
-	DiskTable<tmp_entry_x> tmp_6(prefix + "table6.tmp");
-	DiskTable<entry_7> tmp_7(prefix_2 + "table7.tmp");
+	DiskTable<tmp_entry_x> tmp_6(prefix_table6 + "table6.tmp");
+	DiskTable<entry_7> tmp_7(prefix_table7 + "table7.tmp");
 	compute_table<entry_6, entry_7, tmp_entry_x, DiskSort6, DiskSort7>(
 			7, k, num_threads, &sort_6, nullptr, &tmp_6, &tmp_7);
 	
