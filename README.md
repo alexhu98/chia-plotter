@@ -1,3 +1,33 @@
+# chia-plotter (50 GiB tmpdir2 edition)
+
+This special edition assumes a 50 GiB RAM disk mounted as tmpdir2. It supports K29 to K32 and optimizes the tables
+to make full use of the RAM disk. For example, K29 is computed entirely in the tmpdir2 folder, while K32 allocates
+only the tables that can fit into the tmpdir2.
+
+Note: 64 GiB System RAM minimum required for 50 GiB RAM disk.
+
+## Install
+
+  <summary>Ubuntu 20.04</summary>
+
+  ```bash
+  sudo apt install -y libsodium-dev cmake g++ git build-essential
+  # Checkout the source and install
+  git clone https://github.com/alexhu98/chia-plotter.git
+  cd chia-plotter
+
+  # Checkout the duo edition
+  git checkout 50tmp2
+  git pull
+
+  git submodule update --init
+  ./make_devel.sh
+  ./build/chia_plot --help
+  ```
+
+  The binaries will end up in `build/`, you can copy them elsewhere freely (on the same machine, or similar OS).
+
+
 # chia-plotter (pipelined multi-threaded)
 
 This is a new implementation of a chia plotter which is designed as a processing pipeline,
