@@ -20,16 +20,12 @@ set(CMAKE_MODULE_PATH
 set(TARGET_ARCH ${CMAKE_HOST_SYSTEM_PROCESSOR})
 message(STATUS "Architecture: ${TARGET_ARCH}")
 
-set(ENV{RELIC_MAIN} "1")
+#set(ENV{RELIC_MAIN} "1")
 add_subdirectory(lib/bls-signatures)
 
 add_subdirectory(lib/libbech32)
 
 find_package(Threads REQUIRED)
-
-if(APPLE)
-find_package(sodium REQUIRED)
-endif()
 
 if (SODIUM_FOUND)
   message(STATUS "Found libsodium")
@@ -107,6 +103,9 @@ add_executable(test_phase_4 test/test_phase_4.cpp)
 add_executable(check_phase_1 test/check_phase_1.cpp)
 
 add_executable(chia_plot src/chia_plot.cpp)
+add_executable(chia_plot_k34 src/chia_plot.cpp)
+
+target_compile_definitions(chia_plot_k34 PUBLIC CHIA_K34=1)
 
 target_link_libraries(test_copy chia_plotter)
 target_link_libraries(test_disk_sort chia_plotter)
@@ -119,3 +118,4 @@ target_link_libraries(test_phase_4 chia_plotter)
 target_link_libraries(check_phase_1 chia_plotter)
 
 target_link_libraries(chia_plot chia_plotter bls sodium)
+target_link_libraries(chia_plot_k34 chia_plotter bls sodium)
