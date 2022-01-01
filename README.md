@@ -1,10 +1,10 @@
-# chia-plotter (50 GiB tmpdir2 edition)
+# chia-plotter (90 GiB tmpdir2 edition)
 
-This special edition assumes a 50 GiB RAM disk mounted as tmpdir2. It supports K29 to K32 and optimizes the tables
+This special edition assumes a 90 GiB RAM disk mounted as tmpdir2. It supports K29 to K32 and optimizes the tables
 to make full use of the RAM disk. For example, K29 is computed entirely in the tmpdir2 folder, while K32 allocates
 only the tables that can fit into the tmpdir2.
 
-Note: 64 GiB System RAM minimum required for 50 GiB RAM disk.
+Note: 112 GiB System RAM minimum required for 90 GiB RAM disk.
 
 ## Install
 
@@ -16,8 +16,8 @@ Note: 64 GiB System RAM minimum required for 50 GiB RAM disk.
   git clone https://github.com/alexhu98/chia-plotter.git
   cd chia-plotter
 
-  # Checkout the duo edition
-  git checkout 50tmp2
+  # Checkout this branch
+  git checkout 90tmp2
   git pull
 
   git submodule update --init
