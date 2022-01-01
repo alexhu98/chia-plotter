@@ -164,7 +164,14 @@ void compute(	const phase1::output_t& input, output_t& out,
 		std::string prefix_t = i == 1 ? prefix_2 : prefix;
 		switch (k) {
 		case 32:
+			switch (i) {
+			case 2:
+				prefix_t = prefix_2;
+				break;
+			}
+		
 		case 31:
+			// TODO: 90tmp2
 			break;
 
 		case 30:

@@ -492,9 +492,14 @@ void compute(	const input_t& input, output_t& out,
 	switch (k) {
 	case 32:
 		prefix_t1 = prefix_2;
+		prefix_t2 = prefix_2;
+		prefix_table5 = prefix_2;
+		prefix_table6 = prefix_2;
+		prefix_table7 = prefix_2;
 		break;
 
 	case 31:
+		// TODO: 90tmp2
 		prefix_t1 = prefix_2;
 		prefix_t2 = prefix_2;
 		prefix_t5 = prefix_2;
@@ -503,19 +508,6 @@ void compute(	const input_t& input, output_t& out,
 		break;
 
 	case 30:
-		prefix_t1 = prefix_2;
-		prefix_t2 = prefix_2;
-		prefix_t3 = prefix_2;
-		prefix_t4 = prefix_2;
-		prefix_t5 = prefix_2;
-		prefix_t6 = prefix_2;
-		prefix_table2 = prefix_2;
-		prefix_table3 = prefix_2;
-		prefix_table4 = prefix_2;
-		prefix_table5 = prefix_2;
-		prefix_table7 = prefix_2;
-		break;
-
 	case 29:
 		prefix_t1 = prefix_2;
 		prefix_t2 = prefix_2;
