@@ -20,16 +20,12 @@ set(CMAKE_MODULE_PATH
 set(TARGET_ARCH ${CMAKE_HOST_SYSTEM_PROCESSOR})
 message(STATUS "Architecture: ${TARGET_ARCH}")
 
-set(ENV{RELIC_MAIN} "1")
+#set(ENV{RELIC_MAIN} "1")
 add_subdirectory(lib/bls-signatures)
 
 add_subdirectory(lib/libbech32)
 
 find_package(Threads REQUIRED)
-
-if(APPLE)
-find_package(sodium REQUIRED)
-endif()
 
 if (SODIUM_FOUND)
   message(STATUS "Found libsodium")
